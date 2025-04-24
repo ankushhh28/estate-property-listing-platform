@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { assets, projectsData } from "../assets/assets";
+import { motion } from "framer-motion";
 const Projects = () => {
   // ------------------------------ USE STATES ---------------------------------------
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,21 +29,24 @@ const Projects = () => {
     };
     updateCardsToShow();
     window.addEventListener("resize", updateCardsToShow);
-    
+
     return () => window.removeEventListener("resize", updateCardsToShow);
-  }, []); 
-  
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(nextProject, 2000);
     return () => clearInterval(interval);
   }, []);
-  
+
   // ---------------------------------------------------------------------------------
 
   return (
-    <div
-      className="container mx-auto py-4 pt-20 px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden"
+    <motion.div
+      initial={{ opacity: 0, x: -200 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className="container mx-auto py-4  px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden"
       id="Projects"
     >
       <h1 className="text-2xl sm:text-4xl font-bold mb-2 text-center">
@@ -99,7 +103,8 @@ const Projects = () => {
                     {project.title}
                   </h2>
                   <p className="text-center text-gray-500 text-sm">
-                    {project.price} <span>| </span> {project.location}
+                    {project.price} <span className="px-1">| </span>{" "}
+                    {project.location}
                   </p>
                 </div>
               </div>
@@ -107,7 +112,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -33,15 +33,18 @@ const Navbar = () => {
           <a href="#About" className="cursor-pointer hover:text-gray-400">
             About
           </a>
-          <a href="Project" className="cursor-pointer hover:text-gray-400">
+          <a href="#Projects" className="cursor-pointer hover:text-gray-400">
             Projects
           </a>
-          <a href="#Testimonials" className="cursor-pointer hover:text-gray-400">
+          <a
+            href="#Testimonials"
+            className="cursor-pointer hover:text-gray-400"
+          >
             Testimonials
           </a>
         </ul>
-        <button className="hidden md:block bg-white px-8 py-2 rounded-full">
-          Sign up
+        <button className="hidden md:block font-medium text-gray-800 bg-white/90 px-6 py-2 rounded-full active:scale-95 transition-all duration-200">
+          Get Started
         </button>
         <img
           src={assets.menu_icon}
